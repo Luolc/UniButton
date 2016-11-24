@@ -3,6 +3,9 @@ package com.luolc.unibutton;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.ColorInt;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
@@ -23,6 +26,11 @@ public class UniButton extends AppCompatButton {
     @ColorInt protected int mTextColor;
     @ColorInt protected int mTextColorPressed;
     @ColorInt protected int mTextColorDisabled;
+
+    protected StateListDrawable mBackground;
+    protected Drawable mBackgroundNormal;
+    protected Drawable mBackgroundPressed;
+    protected Drawable mBackgroundDisabled;
 
     static {
         STATE_SET_DISABLED = new int[] { -android.R.attr.state_enabled };
@@ -71,7 +79,29 @@ public class UniButton extends AppCompatButton {
     }
 
     protected void initBackground(TypedArray a) {
+        final Drawable currentBackgroundDrawable = getBackground();
+        if (currentBackgroundDrawable == null) {
+            throw new IllegalStateException("no background instance exist");
+        } else if (currentBackgroundDrawable instanceof StateListDrawable) {
+            mBackground = (StateListDrawable) currentBackgroundDrawable;
+            mBackgroundNormal = currentBackgroundDrawable;
+        } else if (currentBackgroundDrawable instanceof ColorDrawable) {
+            mBackground = new StateListDrawable();
+            mBackgroundNormal = currentBackgroundDrawable;
+        } else {
+            return;
+        }
 
+        mBackgroundPressed = a.getDrawable(R.styleable.UniButton_backgroundPressed);
+        mBackgroundDisabled = a.getDrawable(R.styleable.UniButton_backgroundDisabled);
+        if (mBackgroundPressed == null) mBackgroundPressed = mBackgroundNormal;
+        if (mBackgroundDisabled == null) mBackgroundDisabled = mBackgroundNormal;
+
+        mBackground.addState(STATE_SET_DISABLED, mBackgroundDisabled);
+        mBackground.addState(STATE_SET_PRESSED, mBackgroundPressed);
+        mBackground.addState(STATE_SET_FOCUSED, mBackgroundPressed);
+        mBackground.addState(STATE_SET_NORMAL, mBackgroundNormal);
+        super.setBackgroundDrawable(mBackground);
     }
 
     private void setTextColor(@ColorInt int disabled, @ColorInt int pressed, @ColorInt int focused, @ColorInt int normal) {

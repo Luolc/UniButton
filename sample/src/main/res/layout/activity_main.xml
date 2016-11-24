@@ -16,6 +16,9 @@
             android:text="Test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#00FFFF"
+            app:backgroundPressed="#FF00FF"
+            app:backgroundDisabled="#000000"
             app:textColorPressed="@android:color/white"
             app:textColorDisabled="@android:color/holo_red_light"/>
 </RelativeLayout>
