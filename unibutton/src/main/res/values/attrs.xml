@@ -6,7 +6,16 @@
         <attr name="textColorDisabled" format="color" />
 
         <!-- Background Color -->
-        <attr name="backgroundPressed" format="color|reference" />
-        <attr name="backgroundDisabled" format="color|reference" />
+        <attr name="backgroundPressed" format="color" />
+        <attr name="backgroundDisabled" format="color" />
+
+        <!-- Radius -->
+        <attr name="radius" format="dimension" />
+
+        <!-- Shape -->
+        <attr name="shape" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="semicircular" value="1" />
+        </attr>
     </declare-styleable>
 </resources>

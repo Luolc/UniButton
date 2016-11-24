@@ -5,8 +5,10 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.ColorInt;
+import android.support.annotation.Dimension;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
@@ -28,9 +30,11 @@ public class UniButton extends AppCompatButton {
     @ColorInt protected int mTextColorDisabled;
 
     protected StateListDrawable mBackground;
-    protected Drawable mBackgroundNormal;
-    protected Drawable mBackgroundPressed;
-    protected Drawable mBackgroundDisabled;
+    protected GradientDrawable mBackgroundNormal;
+    protected GradientDrawable mBackgroundPressed;
+    protected GradientDrawable mBackgroundDisabled;
+
+    @Dimension protected int mRadius;
 
     static {
         STATE_SET_DISABLED = new int[] { -android.R.attr.state_enabled };
@@ -82,25 +86,32 @@ public class UniButton extends AppCompatButton {
         final Drawable currentBackgroundDrawable = getBackground();
         if (currentBackgroundDrawable == null) {
             throw new IllegalStateException("no background instance exist");
-        } else if (currentBackgroundDrawable instanceof StateListDrawable) {
-            mBackground = (StateListDrawable) currentBackgroundDrawable;
-            mBackgroundNormal = currentBackgroundDrawable;
         } else if (currentBackgroundDrawable instanceof ColorDrawable) {
             mBackground = new StateListDrawable();
-            mBackgroundNormal = currentBackgroundDrawable;
         } else {
             return;
         }
 
-        mBackgroundPressed = a.getDrawable(R.styleable.UniButton_backgroundPressed);
-        mBackgroundDisabled = a.getDrawable(R.styleable.UniButton_backgroundDisabled);
-        if (mBackgroundPressed == null) mBackgroundPressed = mBackgroundNormal;
-        if (mBackgroundDisabled == null) mBackgroundDisabled = mBackgroundNormal;
+        @ColorInt final int backgroundColorNormal = ((ColorDrawable) currentBackgroundDrawable).getColor();
+        @ColorInt final int backgroundColorPressed = a.getColor(R.styleable.UniButton_backgroundPressed, backgroundColorNormal);
+        @ColorInt final int backgroundColorDisabled = a.getColor(R.styleable.UniButton_backgroundDisabled, backgroundColorNormal);
+        mBackgroundNormal = new GradientDrawable();
+        mBackgroundPressed = new GradientDrawable();
+        mBackgroundDisabled = new GradientDrawable();
+        mBackgroundNormal.setColor(backgroundColorNormal);
+        mBackgroundPressed.setColor(backgroundColorPressed);
+        mBackgroundDisabled.setColor(backgroundColorDisabled);
+
+        mRadius = a.getDimensionPixelSize(R.styleable.UniButton_radius, 0);
+        mBackgroundNormal.setCornerRadius(mRadius);
+        mBackgroundPressed.setCornerRadius(mRadius);
+        mBackgroundDisabled.setCornerRadius(mRadius);
 
         mBackground.addState(STATE_SET_DISABLED, mBackgroundDisabled);
         mBackground.addState(STATE_SET_PRESSED, mBackgroundPressed);
         mBackground.addState(STATE_SET_FOCUSED, mBackgroundPressed);
         mBackground.addState(STATE_SET_NORMAL, mBackgroundNormal);
+
         super.setBackgroundDrawable(mBackground);
     }
 
