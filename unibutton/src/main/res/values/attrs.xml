@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="UniButton">
+        <!-- Text Color -->
+        <attr name="textColorPressed" format="color" />
+        <attr name="textColorDisabled" format="color" />
+
+        <!-- Background Color -->
+        <attr name="backgroundPressed" format="color|reference" />
+        <attr name="backgroundDisabled" format="color|reference" />
+    </declare-styleable>
+</resources>

@@ -2,6 +2,7 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,8 +12,10 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context="com.luolc.unibuttonsample.MainActivity">
 
-    <TextView
+    <com.luolc.unibutton.UniButton
+            android:text="Test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"/>
+            app:textColorPressed="@android:color/white"
+            app:textColorDisabled="@android:color/holo_red_light"/>
 </RelativeLayout>
