@@ -181,54 +181,83 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <com.luolc.unibutton.UniButton
-                android:visibility="invisible"
-                android:text=""
-                android:textColor="@color/keyTextColor"
-                android:textSize="@dimen/key_number_size"
-                android:layout_marginStart="@dimen/key_horizontal_spacing"
-                android:layout_marginEnd="@dimen/key_horizontal_spacing"
-                android:layout_marginTop="@dimen/key_vertical_spacing"
-                android:layout_marginBottom="@dimen/key_vertical_spacing"
+        <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
-                app:radius="4dp"
-                android:typeface="sans"/>
+                android:layout_height="wrap_content">
 
-        <com.luolc.unibutton.UniButton
-                android:text="0"
-                android:textColor="@color/keyTextColor"
-                android:textSize="@dimen/key_number_size"
-                android:layout_marginStart="@dimen/key_horizontal_spacing"
-                android:layout_marginEnd="@dimen/key_horizontal_spacing"
-                android:layout_marginTop="@dimen/key_vertical_spacing"
-                android:layout_marginBottom="@dimen/key_vertical_spacing"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
-                app:radius="4dp"
-                android:typeface="sans"/>
+            <com.luolc.unibutton.UniButton
+                    android:visibility="visible"
+                    android:text=""
+                    android:textColor="@color/keyTextColor"
+                    android:textSize="@dimen/key_number_size"
+                    android:layout_marginStart="@dimen/key_horizontal_spacing"
+                    android:layout_marginEnd="@dimen/key_horizontal_spacing"
+                    android:layout_marginTop="@dimen/key_vertical_spacing"
+                    android:layout_marginBottom="@dimen/key_vertical_spacing"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#F8F8F8"
+                    app:backgroundPressed="@color/keyPressedColor"
+                    app:radius="4dp"
+                    android:typeface="sans"/>
 
-        <com.luolc.unibutton.UniButton
-                android:visibility="invisible"
-                android:text=""
-                android:textColor="@color/keyTextColor"
-                android:textSize="@dimen/key_number_size"
-                android:layout_marginStart="@dimen/key_horizontal_spacing"
-                android:layout_marginEnd="@dimen/key_horizontal_spacing"
-                android:layout_marginTop="@dimen/key_vertical_spacing"
-                android:layout_marginBottom="@dimen/key_vertical_spacing"
+            <ImageView
+                    android:layout_gravity="center"
+                    android:elevation="100dp"
+                    android:src="@mipmap/number_key_icon_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </FrameLayout>
+
+        <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
-                app:radius="4dp"
-                android:typeface="sans"/>
+                android:layout_height="wrap_content">
+
+            <com.luolc.unibutton.UniButton
+                    android:text="0"
+                    android:textColor="@color/keyTextColor"
+                    android:textSize="@dimen/key_number_size"
+                    android:layout_marginStart="@dimen/key_horizontal_spacing"
+                    android:layout_marginEnd="@dimen/key_horizontal_spacing"
+                    android:layout_marginTop="@dimen/key_vertical_spacing"
+                    android:layout_marginBottom="@dimen/key_vertical_spacing"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/white"
+                    app:backgroundPressed="@color/keyPressedColor"
+                    app:radius="4dp"
+                    android:typeface="sans"/>
+        </FrameLayout>
+
+        <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+            <com.luolc.unibutton.UniButton
+                    android:visibility="visible"
+                    android:text=""
+                    android:textColor="@color/keyTextColor"
+                    android:textSize="@dimen/key_number_size"
+                    android:layout_marginStart="@dimen/key_horizontal_spacing"
+                    android:layout_marginEnd="@dimen/key_horizontal_spacing"
+                    android:layout_marginTop="@dimen/key_vertical_spacing"
+                    android:layout_marginBottom="@dimen/key_vertical_spacing"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#F8F8F8"
+                    app:backgroundPressed="@color/keyPressedColor"
+                    app:radius="4dp"
+                    android:typeface="sans"/>
+
+            <ImageView
+                    android:layout_gravity="center"
+                    android:elevation="100dp"
+                    android:src="@mipmap/number_keyboard_icon_backspace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </FrameLayout>
     </LinearLayout>
 </LinearLayout>

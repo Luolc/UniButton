@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="UniButton">
+    <declare-styleable name="SimpleUniButton">
         <!-- Text Color -->
         <attr name="textColorPressed" format="color" />
         <attr name="textColorDisabled" format="color" />
 
         <!-- Background Color -->
-        <attr name="backgroundPressed" format="color" />
-        <attr name="backgroundDisabled" format="color" />
+        <attr name="backgroundPressed" format="color|reference" />
+        <attr name="backgroundDisabled" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="UniButton">
+        <!-- Text Color -->
+        <attr name="textColorPressed" />
+        <attr name="textColorDisabled" />
+
+        <!-- Background Color -->
+        <attr name="backgroundPressed" />
+        <attr name="backgroundDisabled" />
 
         <!-- Radius -->
         <attr name="radius" format="dimension" />

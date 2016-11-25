@@ -21,3 +21,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    // Java 8 Hack
+    streamVersion = '1.1.3'
+}
