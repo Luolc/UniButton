@@ -67,29 +67,31 @@ public class SimpleUniButton extends AppCompatButton {
     protected void initText(TypedArray a) {
         final ColorStateList textColorStateList = getTextColors();
         @ColorInt final int currentTextColor = getCurrentTextColor();
-        @ColorInt final int defaultTextColor = textColorStateList.getColorForState(STATE_SET_NORMAL, currentTextColor);
-        @ColorInt final int defaultTextColorPressed = textColorStateList.getColorForState(STATE_SET_PRESSED, currentTextColor);
-        @ColorInt final int defaultTextColorDisabled = textColorStateList.getColorForState(STATE_SET_DISABLED, currentTextColor);
-        mTextColor = defaultTextColor;
+        @ColorInt final int defaultTextColor =
+                textColorStateList.getColorForState(STATE_SET_NORMAL, currentTextColor);
+        @ColorInt final int defaultTextColorPressed =
+                textColorStateList.getColorForState(STATE_SET_PRESSED, currentTextColor);
+        @ColorInt final int defaultTextColorDisabled =
+                textColorStateList.getColorForState(STATE_SET_DISABLED, currentTextColor);
+        mTextColor = a.getColor(R.styleable.SimpleUniButton_android_textColor, defaultTextColor);
         mTextColorPressed = a.getColor(R.styleable.SimpleUniButton_textColorPressed, defaultTextColorPressed);
         mTextColorDisabled = a.getColor(R.styleable.SimpleUniButton_textColorDisabled, defaultTextColorDisabled);
         setTextColor(mTextColorDisabled, mTextColorPressed, mTextColorPressed, mTextColor);
     }
 
     protected void initBackground(TypedArray a) {
-        final Drawable currentBackgroundDrawable = getBackground();
-        if (currentBackgroundDrawable == null) {
+        final Drawable currentBackground = getBackground();
+        if (currentBackground == null) {
             throw new IllegalStateException("no background instance exist");
-        } else if (currentBackgroundDrawable instanceof StateListDrawable) {
-            mBackground = (StateListDrawable) currentBackgroundDrawable;
-            mBackgroundNormal = mBackground.getCurrent();
-        } else {
-            mBackground = new StateListDrawable();
-            mBackgroundNormal = currentBackgroundDrawable;
+        } else if (currentBackground instanceof StateListDrawable) {
+            return;
         }
 
+        mBackground = new StateListDrawable();
+        mBackgroundNormal = a.getDrawable(R.styleable.SimpleUniButton_android_background);
         mBackgroundPressed = a.getDrawable(R.styleable.SimpleUniButton_backgroundPressed);
         mBackgroundDisabled = a.getDrawable(R.styleable.SimpleUniButton_backgroundDisabled);
+        if (mBackgroundNormal == null) mBackgroundNormal = currentBackground;
         if (mBackgroundPressed == null) mBackgroundPressed = mBackgroundNormal;
         if (mBackgroundDisabled == null) mBackgroundDisabled = mBackgroundNormal;
 

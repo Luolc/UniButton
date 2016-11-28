@@ -2,20 +2,24 @@
 <resources>
     <declare-styleable name="SimpleUniButton">
         <!-- Text Color -->
+        <attr name="android:textColor" />
         <attr name="textColorPressed" format="color" />
         <attr name="textColorDisabled" format="color" />
 
         <!-- Background Color -->
+        <attr name="android:background" />
         <attr name="backgroundPressed" format="color|reference" />
         <attr name="backgroundDisabled" format="color|reference" />
     </declare-styleable>
 
     <declare-styleable name="UniButton">
         <!-- Text Color -->
+        <attr name="android:textColor" />
         <attr name="textColorPressed" />
         <attr name="textColorDisabled" />
 
         <!-- Background Color -->
+        <attr name="android:background" />
         <attr name="backgroundPressed" />
         <attr name="backgroundDisabled" />
 

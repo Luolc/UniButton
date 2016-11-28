@@ -2,8 +2,7 @@ package com.luolc.unibutton;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.ColorInt;
@@ -42,18 +41,13 @@ public class UniButton extends SimpleUniButton {
 
     @Override
     protected void initBackground(TypedArray a) {
-        final Drawable currentBackgroundDrawable = getBackground();
-        if (currentBackgroundDrawable == null) {
-            throw new IllegalStateException("no background instance exist");
-        } else if (currentBackgroundDrawable instanceof ColorDrawable) {
-            mBackground = new StateListDrawable();
-        } else {
-            return;
-        }
-
-        @ColorInt final int backgroundColorNormal = ((ColorDrawable) currentBackgroundDrawable).getColor();
-        @ColorInt final int backgroundColorPressed = a.getColor(R.styleable.SimpleUniButton_backgroundPressed, backgroundColorNormal);
-        @ColorInt final int backgroundColorDisabled = a.getColor(R.styleable.SimpleUniButton_backgroundDisabled, backgroundColorNormal);
+        mBackground = new StateListDrawable();
+        @ColorInt final int backgroundColorNormal =
+                a.getColor(R.styleable.UniButton_android_background, Color.WHITE);
+        @ColorInt final int backgroundColorPressed =
+                a.getColor(R.styleable.SimpleUniButton_backgroundPressed, backgroundColorNormal);
+        @ColorInt final int backgroundColorDisabled =
+                a.getColor(R.styleable.SimpleUniButton_backgroundDisabled, backgroundColorNormal);
         final GradientDrawable backgroundNormal = new GradientDrawable();
         final GradientDrawable backgroundPressed = new GradientDrawable();
         final GradientDrawable backgroundDisabled = new GradientDrawable();
@@ -69,7 +63,6 @@ public class UniButton extends SimpleUniButton {
         mBackgroundNormal = backgroundNormal;
         mBackgroundPressed = backgroundPressed;
         mBackgroundDisabled = backgroundDisabled;
-
         mBackground.addState(STATE_SET_DISABLED, mBackgroundDisabled);
         mBackground.addState(STATE_SET_PRESSED, mBackgroundPressed);
         mBackground.addState(STATE_SET_FOCUSED, mBackgroundPressed);
