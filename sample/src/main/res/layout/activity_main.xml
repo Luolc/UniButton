@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="1"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -30,12 +30,12 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="2"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -46,12 +46,12 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="3"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -62,8 +62,8 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
     </LinearLayout>
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="4"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -84,12 +84,12 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="5"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -100,12 +100,12 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="6"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -116,8 +116,8 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
     </LinearLayout>
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="7"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -138,12 +138,12 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="8"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -154,12 +154,12 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
 
-        <com.luolc.unibutton.UniButton
+        <com.luolc.unibutton.SimpleUniButton
                 android:text="9"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -170,8 +170,8 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                app:backgroundPressed="@color/keyPressedColor"
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
                 app:radius="4dp"
                 android:typeface="sans"/>
     </LinearLayout>
@@ -181,83 +181,50 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <FrameLayout
+        <com.luolc.unibutton.SimpleUniButton
+                android:textColor="@color/keyTextColor"
+                android:textSize="@dimen/key_number_size"
+                android:layout_marginStart="@dimen/key_horizontal_spacing"
+                android:layout_marginEnd="@dimen/key_horizontal_spacing"
+                android:layout_marginTop="@dimen/key_vertical_spacing"
+                android:layout_marginBottom="@dimen/key_vertical_spacing"
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content">
+                android:background="@drawable/number_key_icon_collapse"
+                app:backgroundPressed="@drawable/number_key_icon_collapse_pressed"
+                app:radius="4dp"
+                android:typeface="sans"/>
 
-            <com.luolc.unibutton.UniButton
-                    android:visibility="visible"
-                    android:text=""
-                    android:textColor="@color/keyTextColor"
-                    android:textSize="@dimen/key_number_size"
-                    android:layout_marginStart="@dimen/key_horizontal_spacing"
-                    android:layout_marginEnd="@dimen/key_horizontal_spacing"
-                    android:layout_marginTop="@dimen/key_vertical_spacing"
-                    android:layout_marginBottom="@dimen/key_vertical_spacing"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="#F8F8F8"
-                    app:backgroundPressed="@color/keyPressedColor"
-                    app:radius="4dp"
-                    android:typeface="sans"/>
-
-            <ImageView
-                    android:layout_gravity="center"
-                    android:elevation="100dp"
-                    android:src="@mipmap/number_key_icon_collapse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </FrameLayout>
-
-        <FrameLayout
+        <com.luolc.unibutton.SimpleUniButton
+                android:text="0"
+                android:textColor="@color/keyTextColor"
+                android:textSize="@dimen/key_number_size"
+                android:layout_marginStart="@dimen/key_horizontal_spacing"
+                android:layout_marginEnd="@dimen/key_horizontal_spacing"
+                android:layout_marginTop="@dimen/key_vertical_spacing"
+                android:layout_marginBottom="@dimen/key_vertical_spacing"
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content">
+                android:background="@drawable/number_key_icon_normal"
+                app:backgroundPressed="@drawable/number_key_icon_pressed"
+                app:radius="4dp"
+                android:typeface="sans"/>
 
-            <com.luolc.unibutton.UniButton
-                    android:text="0"
-                    android:textColor="@color/keyTextColor"
-                    android:textSize="@dimen/key_number_size"
-                    android:layout_marginStart="@dimen/key_horizontal_spacing"
-                    android:layout_marginEnd="@dimen/key_horizontal_spacing"
-                    android:layout_marginTop="@dimen/key_vertical_spacing"
-                    android:layout_marginBottom="@dimen/key_vertical_spacing"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@android:color/white"
-                    app:backgroundPressed="@color/keyPressedColor"
-                    app:radius="4dp"
-                    android:typeface="sans"/>
-        </FrameLayout>
-
-        <FrameLayout
+        <com.luolc.unibutton.SimpleUniButton
+                android:textColor="@color/keyTextColor"
+                android:textSize="@dimen/key_number_size"
+                android:layout_marginStart="@dimen/key_horizontal_spacing"
+                android:layout_marginEnd="@dimen/key_horizontal_spacing"
+                android:layout_marginTop="@dimen/key_vertical_spacing"
+                android:layout_marginBottom="@dimen/key_vertical_spacing"
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content">
-
-            <com.luolc.unibutton.UniButton
-                    android:visibility="visible"
-                    android:text=""
-                    android:textColor="@color/keyTextColor"
-                    android:textSize="@dimen/key_number_size"
-                    android:layout_marginStart="@dimen/key_horizontal_spacing"
-                    android:layout_marginEnd="@dimen/key_horizontal_spacing"
-                    android:layout_marginTop="@dimen/key_vertical_spacing"
-                    android:layout_marginBottom="@dimen/key_vertical_spacing"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="#F8F8F8"
-                    app:backgroundPressed="@color/keyPressedColor"
-                    app:radius="4dp"
-                    android:typeface="sans"/>
-
-            <ImageView
-                    android:layout_gravity="center"
-                    android:elevation="100dp"
-                    android:src="@mipmap/number_keyboard_icon_backspace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </FrameLayout>
+                android:background="@drawable/number_key_icon_backspace"
+                app:backgroundPressed="@drawable/number_key_icon_backspace_pressed"
+                app:radius="4dp"
+                android:typeface="sans"/>
     </LinearLayout>
 </LinearLayout>
