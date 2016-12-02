@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="SimpleUniButton">
+    <declare-styleable name="AbstractUniButton">
         <!-- Text Color -->
         <attr name="android:textColor" />
         <attr name="textColorPressed" format="color" />
@@ -13,11 +13,6 @@
     </declare-styleable>
 
     <declare-styleable name="UniButton">
-        <!-- Text Color -->
-        <attr name="android:textColor" />
-        <attr name="textColorPressed" />
-        <attr name="textColorDisabled" />
-
         <!-- Background Color -->
         <attr name="android:background" />
         <attr name="backgroundPressed" />

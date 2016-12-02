@@ -14,40 +14,40 @@ import android.util.AttributeSet;
  * @since 16/11/24
  */
 
-public class UniButton extends SimpleUniButton {
+public class UniButton extends AbstractUniButton {
 
     @Dimension protected int mRadius;
 
     public UniButton(Context context) {
-        this(context, null);
+        super(context);
     }
 
     public UniButton(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.buttonStyle);
+        super(context, attrs);
     }
 
     public UniButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        if (!isInEditMode()) init(context, attrs);
+    }
+
+    public void setBackgourndRadius(@Dimension int radius) {
+        mRadius = radius;
+        ((GradientDrawable) mBackgroundNormal).setCornerRadius(radius);
+        ((GradientDrawable) mBackgroundPressed).setCornerRadius(radius);
+        ((GradientDrawable) mBackgroundDisabled).setCornerRadius(radius);
     }
 
     @Override
-    protected void init(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.UniButton);
-        initText(typedArray);
-        initBackground(typedArray);
-        typedArray.recycle();
-    }
+    protected void initBackground(Context context, AttributeSet attrs) {
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.UniButton);
 
-    @Override
-    protected void initBackground(TypedArray a) {
         mBackground = new StateListDrawable();
         @ColorInt final int backgroundColorNormal =
                 a.getColor(R.styleable.UniButton_android_background, Color.WHITE);
         @ColorInt final int backgroundColorPressed =
-                a.getColor(R.styleable.SimpleUniButton_backgroundPressed, backgroundColorNormal);
+                a.getColor(R.styleable.UniButton_backgroundPressed, backgroundColorNormal);
         @ColorInt final int backgroundColorDisabled =
-                a.getColor(R.styleable.SimpleUniButton_backgroundDisabled, backgroundColorNormal);
+                a.getColor(R.styleable.UniButton_backgroundDisabled, backgroundColorNormal);
         final GradientDrawable backgroundNormal = new GradientDrawable();
         final GradientDrawable backgroundPressed = new GradientDrawable();
         final GradientDrawable backgroundDisabled = new GradientDrawable();
@@ -69,5 +69,7 @@ public class UniButton extends SimpleUniButton {
         mBackground.addState(STATE_SET_NORMAL, mBackgroundNormal);
 
         super.setBackgroundDrawable(mBackground);
+
+        a.recycle();
     }
 }
