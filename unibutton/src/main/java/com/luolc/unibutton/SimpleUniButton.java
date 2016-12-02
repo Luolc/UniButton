@@ -24,17 +24,14 @@ public class SimpleUniButton extends AbstractUniButton {
     }
 
     public void setBackgroundNormal(Drawable backgroundNormal) {
-        mBackgroundNormal = backgroundNormal;
-        refreshBackgroundState();
+        mBackgroundNormalWrapper.setWrappedDrawable(backgroundNormal);
     }
 
     public void setBackgroundPressed(Drawable backgroundPressed) {
-        mBackgroundPressed = backgroundPressed;
-        refreshBackgroundState();
+        mBackgroundPressedWrapper.setWrappedDrawable(backgroundPressed);
     }
 
     public void setBackgroundDisabled(Drawable backgroundDisabled) {
-        mBackgroundDisabled = backgroundDisabled;
-        refreshBackgroundState();
+        mBackgroundDisabledWrapper.setWrappedDrawable(backgroundDisabled);
     }
 }

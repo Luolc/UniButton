@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.ColorInt;
+import android.support.v7.graphics.drawable.DrawableWrapper;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
@@ -28,9 +29,9 @@ public abstract class AbstractUniButton extends AppCompatButton {
     @ColorInt protected int mTextColorDisabled;
 
     protected StateListDrawable mBackground;
-    protected Drawable mBackgroundNormal;
-    protected Drawable mBackgroundPressed;
-    protected Drawable mBackgroundDisabled;
+    protected DrawableWrapper mBackgroundNormalWrapper;
+    protected DrawableWrapper mBackgroundPressedWrapper;
+    protected DrawableWrapper mBackgroundDisabledWrapper;
 
     static {
         STATE_SET_DISABLED = new int[] { -android.R.attr.state_enabled };
@@ -74,18 +75,21 @@ public abstract class AbstractUniButton extends AppCompatButton {
     }
 
     public void setBackgroundColorNormal(@ColorInt int backgroundColorNormal) {
-        mBackgroundNormal = new ColorDrawable();
-        ((ColorDrawable) mBackgroundNormal).setColor(backgroundColorNormal);
+        ColorDrawable backgroundNormal = new ColorDrawable();
+        backgroundNormal.setColor(backgroundColorNormal);
+        mBackgroundNormalWrapper.setWrappedDrawable(backgroundNormal);
     }
 
     public void setBackgroundColorPressed(@ColorInt int backgroundColorPressed) {
-        mBackgroundPressed = new ColorDrawable();
-        ((ColorDrawable) mBackgroundPressed).setColor(backgroundColorPressed);
+        ColorDrawable backgroundPressed = new ColorDrawable();
+        backgroundPressed.setColor(backgroundColorPressed);
+        mBackgroundNormalWrapper.setWrappedDrawable(backgroundPressed);
     }
 
     public void setBackgroundColorDisabled(@ColorInt int backgroundColorDisabled) {
-        mBackgroundDisabled = new ColorDrawable();
-        ((ColorDrawable) mBackgroundDisabled).setColor(backgroundColorDisabled);
+        ColorDrawable backgroundDisabled = new ColorDrawable();
+        backgroundDisabled.setColor(backgroundColorDisabled);
+        mBackgroundNormalWrapper.setWrappedDrawable(backgroundDisabled);
     }
 
     protected void init(Context context, AttributeSet attrs) {
@@ -122,14 +126,22 @@ public abstract class AbstractUniButton extends AppCompatButton {
             return;
         }
 
-        mBackgroundNormal = a.getDrawable(R.styleable.AbstractUniButton_android_background);
-        mBackgroundPressed = a.getDrawable(R.styleable.AbstractUniButton_backgroundPressed);
-        mBackgroundDisabled = a.getDrawable(R.styleable.AbstractUniButton_backgroundDisabled);
-        if (mBackgroundNormal == null) mBackgroundNormal = currentBackground;
-        if (mBackgroundPressed == null) mBackgroundPressed = mBackgroundNormal;
-        if (mBackgroundDisabled == null) mBackgroundDisabled = mBackgroundNormal;
+        Drawable backgroundNormal = a.getDrawable(R.styleable.AbstractUniButton_android_background);
+        Drawable backgroundPressed = a.getDrawable(R.styleable.AbstractUniButton_backgroundPressed);
+        Drawable backgroundDisabled = a.getDrawable(R.styleable.AbstractUniButton_backgroundDisabled);
+        if (backgroundNormal == null) backgroundNormal = currentBackground;
+        if (backgroundPressed == null) backgroundPressed = backgroundNormal;
+        if (backgroundDisabled == null) backgroundDisabled = backgroundNormal;
 
-        refreshBackgroundState();
+        mBackground = new StateListDrawable();
+        mBackgroundNormalWrapper = new DrawableWrapper(backgroundNormal);
+        mBackgroundPressedWrapper = new DrawableWrapper(backgroundPressed);
+        mBackgroundDisabledWrapper = new DrawableWrapper(backgroundDisabled);
+        mBackground.addState(STATE_SET_DISABLED, mBackgroundDisabledWrapper);
+        mBackground.addState(STATE_SET_PRESSED, mBackgroundPressedWrapper);
+        mBackground.addState(STATE_SET_FOCUSED, mBackgroundPressedWrapper);
+        mBackground.addState(STATE_SET_NORMAL, mBackgroundNormalWrapper);
+        super.setBackgroundDrawable(mBackground);
 
         a.recycle();
     }
@@ -137,16 +149,5 @@ public abstract class AbstractUniButton extends AppCompatButton {
     protected void setTextColor(@ColorInt int disabled, @ColorInt int pressed, @ColorInt int focused, @ColorInt int normal) {
         @ColorInt final int[] colors = new int[] { disabled, pressed, focused, normal };
         super.setTextColor(new ColorStateList(STATES, colors));
-    }
-
-    protected void refreshBackgroundState() {
-        mBackground = new StateListDrawable();
-
-        mBackground.addState(STATE_SET_DISABLED, mBackgroundDisabled);
-        mBackground.addState(STATE_SET_PRESSED, mBackgroundPressed);
-        mBackground.addState(STATE_SET_FOCUSED, mBackgroundPressed);
-        mBackground.addState(STATE_SET_NORMAL, mBackgroundNormal);
-
-        super.setBackgroundDrawable(mBackground);
     }
 }

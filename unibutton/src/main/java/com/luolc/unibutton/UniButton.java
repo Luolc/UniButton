@@ -7,6 +7,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Dimension;
+import android.support.v7.graphics.drawable.DrawableWrapper;
 import android.util.AttributeSet;
 
 /**
@@ -30,18 +31,17 @@ public class UniButton extends AbstractUniButton {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setBackgourndRadius(@Dimension int radius) {
+    public void setBackgroundRadius(@Dimension int radius) {
         mRadius = radius;
-        ((GradientDrawable) mBackgroundNormal).setCornerRadius(radius);
-        ((GradientDrawable) mBackgroundPressed).setCornerRadius(radius);
-        ((GradientDrawable) mBackgroundDisabled).setCornerRadius(radius);
+        ((GradientDrawable) mBackgroundNormalWrapper.getCurrent()).setCornerRadius(radius);
+        ((GradientDrawable) mBackgroundPressedWrapper.getCurrent()).setCornerRadius(radius);
+        ((GradientDrawable) mBackgroundDisabledWrapper.getCurrent()).setCornerRadius(radius);
     }
 
     @Override
     protected void initBackground(Context context, AttributeSet attrs) {
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.UniButton);
 
-        mBackground = new StateListDrawable();
         @ColorInt final int backgroundColorNormal =
                 a.getColor(R.styleable.UniButton_android_background, Color.WHITE);
         @ColorInt final int backgroundColorPressed =
@@ -60,14 +60,14 @@ public class UniButton extends AbstractUniButton {
         backgroundPressed.setCornerRadius(mRadius);
         backgroundDisabled.setCornerRadius(mRadius);
 
-        mBackgroundNormal = backgroundNormal;
-        mBackgroundPressed = backgroundPressed;
-        mBackgroundDisabled = backgroundDisabled;
-        mBackground.addState(STATE_SET_DISABLED, mBackgroundDisabled);
-        mBackground.addState(STATE_SET_PRESSED, mBackgroundPressed);
-        mBackground.addState(STATE_SET_FOCUSED, mBackgroundPressed);
-        mBackground.addState(STATE_SET_NORMAL, mBackgroundNormal);
-
+        mBackground = new StateListDrawable();
+        mBackgroundNormalWrapper = new DrawableWrapper(backgroundNormal);
+        mBackgroundPressedWrapper = new DrawableWrapper(backgroundPressed);
+        mBackgroundDisabledWrapper = new DrawableWrapper(backgroundDisabled);
+        mBackground.addState(STATE_SET_DISABLED, mBackgroundDisabledWrapper);
+        mBackground.addState(STATE_SET_PRESSED, mBackgroundPressedWrapper);
+        mBackground.addState(STATE_SET_FOCUSED, mBackgroundPressedWrapper);
+        mBackground.addState(STATE_SET_NORMAL, mBackgroundNormalWrapper);
         super.setBackgroundDrawable(mBackground);
 
         a.recycle();

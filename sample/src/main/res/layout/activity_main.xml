@@ -30,10 +30,12 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@mipmap/ic_launcher"
                 app:radius="4dp"
                 android:typeface="sans"/>
 
         <com.luolc.unibutton.SimpleUniButton
+                android:id="@+id/btn_2"
                 android:text="2"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -46,7 +48,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/number_key_icon_normal"
                 app:backgroundPressed="@drawable/number_key_icon_pressed"
-                app:radius="4dp"
                 android:typeface="sans"/>
 
         <com.luolc.unibutton.SimpleUniButton

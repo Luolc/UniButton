@@ -15,8 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
         SimpleUniButton key1 = (SimpleUniButton) findViewById(R.id.btn_1);
         key1.setText("1");
-//        key1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.number_key_icon_normal));
         key1.setBackgroundNormal(ContextCompat.getDrawable(this, R.drawable.number_key_icon_normal));
-//        key1.setBackgroundPressed(ContextCompat.getDrawable(this, R.drawable.number_key_icon_pressed));
+        key1.setBackgroundPressed(ContextCompat.getDrawable(this, R.drawable.number_key_icon_pressed));
     }
 }
