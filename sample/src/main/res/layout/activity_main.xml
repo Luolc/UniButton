@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <com.luolc.unibutton.SimpleUniButton
+        <com.luolc.unibutton.UniButton
                 android:id="@+id/btn_1"
                 android:textColor="@color/keyTextColor"
                 android:textSize="@dimen/key_number_size"
@@ -30,8 +30,11 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@mipmap/ic_launcher"
-                app:radius="4dp"
+                android:background="@android:color/white"
+                app:topLeftRadius="0dp"
+                app:topRightRadius="4dp"
+                app:bottomLeftRadius="0dp"
+                app:bottomRightRadius="4dp"
                 android:typeface="sans"/>
 
         <com.luolc.unibutton.SimpleUniButton

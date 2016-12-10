@@ -10,6 +10,8 @@ import android.support.annotation.Dimension;
 import android.support.v7.graphics.drawable.DrawableWrapper;
 import android.util.AttributeSet;
 
+import java.util.Arrays;
+
 /**
  * @author LuoLiangchen
  * @since 16/11/24
@@ -17,7 +19,7 @@ import android.util.AttributeSet;
 
 public class UniButton extends AbstractUniButton {
 
-    @Dimension protected int mRadius;
+    @Dimension protected float[] mRadii;
 
     public UniButton(Context context) {
         super(context);
@@ -31,11 +33,29 @@ public class UniButton extends AbstractUniButton {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setBackgroundRadius(@Dimension int radius) {
-        mRadius = radius;
-        ((GradientDrawable) mBackgroundNormalWrapper.getCurrent()).setCornerRadius(radius);
-        ((GradientDrawable) mBackgroundPressedWrapper.getCurrent()).setCornerRadius(radius);
-        ((GradientDrawable) mBackgroundDisabledWrapper.getCurrent()).setCornerRadius(radius);
+    public void setRadius(@Dimension int radius) {
+        Arrays.fill(mRadii, radius);
+        internalSetRadius();
+    }
+
+    public void setTopLeftRadius(@Dimension int radius) {
+        mRadii[0] = mRadii[1] = radius;
+        internalSetRadius();
+    }
+
+    public void setTopRightRadius(@Dimension int radius) {
+        mRadii[2] = mRadii[3] = radius;
+        internalSetRadius();
+    }
+
+    public void setBottomRightRadius(@Dimension int radius) {
+        mRadii[4] = mRadii[5] = radius;
+        internalSetRadius();
+    }
+
+    public void setBottomLeftRadius(@Dimension int radius) {
+        mRadii[6] = mRadii[7] = radius;
+        internalSetRadius();
     }
 
     @Override
@@ -55,10 +75,20 @@ public class UniButton extends AbstractUniButton {
         backgroundPressed.setColor(backgroundColorPressed);
         backgroundDisabled.setColor(backgroundColorDisabled);
 
-        mRadius = a.getDimensionPixelSize(R.styleable.UniButton_radius, 0);
-        backgroundNormal.setCornerRadius(mRadius);
-        backgroundPressed.setCornerRadius(mRadius);
-        backgroundDisabled.setCornerRadius(mRadius);
+        final int radius = a.getDimensionPixelSize(R.styleable.UniButton_radius, 0);
+        final int topLeftRadius = a.getDimensionPixelSize(R.styleable.UniButton_topLeftRadius, radius);
+        final int topRightRadius = a.getDimensionPixelSize(R.styleable.UniButton_topRightRadius, radius);
+        final int bottomRightRadius = a.getDimensionPixelSize(R.styleable.UniButton_bottomRightRadius, radius);
+        final int bottomLeftRadius = a.getDimensionPixelSize(R.styleable.UniButton_bottomLeftRadius, radius);
+        mRadii = new float[] {
+                topLeftRadius,      topLeftRadius,
+                topRightRadius,     topRightRadius,
+                bottomRightRadius,  bottomRightRadius,
+                bottomLeftRadius,   bottomLeftRadius
+        };
+        backgroundNormal.setCornerRadii(mRadii);
+        backgroundPressed.setCornerRadii(mRadii);
+        backgroundDisabled.setCornerRadii(mRadii);
 
         mBackground = new StateListDrawable();
         mBackgroundNormalWrapper = new DrawableWrapper(backgroundNormal);
@@ -71,5 +101,11 @@ public class UniButton extends AbstractUniButton {
         super.setBackgroundDrawable(mBackground);
 
         a.recycle();
+    }
+
+    private void internalSetRadius() {
+        ((GradientDrawable) mBackgroundNormalWrapper.getCurrent()).setCornerRadii(mRadii);
+        ((GradientDrawable) mBackgroundPressedWrapper.getCurrent()).setCornerRadii(mRadii);
+        ((GradientDrawable) mBackgroundDisabledWrapper.getCurrent()).setCornerRadii(mRadii);
     }
 }
